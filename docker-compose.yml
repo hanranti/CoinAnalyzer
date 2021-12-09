@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+
+    coin-analyzer-db:
+        image: postgres:latest
+        restart: unless-stopped
+        env_file: ./.env
+        volumes:
+            - database-data:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+        container_name: coin-analyzer-db
+
+    coin-analyzer-backend:
+        build:
+            context: backend
+            args:
+                NODE_ENV: "development"
+        ports:
+            - 1234:1234
+        env_file: ./.env
+        depends_on:
+            - coin-analyzer-db
+        volumes:
+            - ./backend:/usr/src/app
+        command: npm run dev
+        container_name: coin-analyzer-backend
+
+    coin-analyzer-frontend:
+        build:
+            context: frontend
+            args:
+                NODE_ENV: "development"
+        ports:
+            - 80:80
+        env_file: ./.env
+        depends_on:
+            - coin-analyzer-backend
+        volumes:
+            - ./frontend:/usr/src/app
+        command: npm start
+        container_name: coin-analyzer-frontend
+
+volumes:
+    database-data:
