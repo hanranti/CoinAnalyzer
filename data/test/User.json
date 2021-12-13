@@ -1,0 +1,51 @@
+[
+    {
+      "username": "Chesterfield",
+      "passwordHash": "asdfghjkl",
+      "name": "Natasha Glenn",
+      "createdAt": "2014-03-10T02:59:28 -02:00",
+      "updatedAt": "2014-03-11T09:33:15 -02:00"
+    },
+    {
+      "username": "Cassel",
+      "passwordHash": "qwertyuiop",
+      "name": "Sally Suarez",
+      "createdAt": "2019-05-10T04:22:34 -03:00",
+      "updatedAt": "2017-02-01T02:58:09 -02:00"
+    },
+    {
+      "username": "Oasis",
+      "passwordHash": "asdfghjkl",
+      "name": "Mccray Crawford",
+      "createdAt": "2015-07-13T02:07:15 -03:00",
+      "updatedAt": "2018-02-25T06:04:17 -02:00"
+    },
+    {
+      "username": "Albrightsville",
+      "passwordHash": "qwertyuiop",
+      "name": "Paulette Bennett",
+      "createdAt": "2019-09-17T03:02:13 -03:00",
+      "updatedAt": "2019-06-20T08:45:44 -03:00"
+    },
+    {
+      "username": "Adamstown",
+      "passwordHash": "qwertyuiop",
+      "name": "Patel Blake",
+      "createdAt": "2014-12-15T05:17:30 -02:00",
+      "updatedAt": "2021-07-08T06:03:45 -03:00"
+    },
+    {
+      "username": "Epworth",
+      "passwordHash": "zxcvbnm",
+      "name": "Joyce Huffman",
+      "createdAt": "2014-01-13T04:47:54 -02:00",
+      "updatedAt": "2018-11-06T03:38:33 -02:00"
+    },
+    {
+      "username": "Carrsville",
+      "passwordHash": "qwertyuiop",
+      "name": "Vance Zimmerman",
+      "createdAt": "2014-12-24T01:00:06 -02:00",
+      "updatedAt": "2014-01-10T03:16:57 -02:00"
+    }
+  ]

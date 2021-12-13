@@ -19,6 +19,11 @@ const Login = ({ loginData }) => {
     'backgroundColor': '#d9d9d9'
   }
 
+  const errorStyle = {
+    'color': '#ff6400',
+    'backgroundColor': '#9f0195'
+  }
+
   const loginStyle = {
     'float': 'left',
     'textAlign': 'left',
@@ -45,6 +50,12 @@ const Login = ({ loginData }) => {
     ? Object.assign(signupStyle, cancelledStyle)
     : Object.assign(signupStyle, usedStyle)
 
+  const errorMessage = <div style={errorStyle}>
+    <ul>
+      {loginData.errorMessage.map(error => <li key={error}>{error}</li>)}
+    </ul>
+  </div>
+
   return <div style={formStyle}>
     <div style={{ 'textAlign': 'center' }}>
       <p>Switch login/signup</p>
@@ -52,6 +63,9 @@ const Login = ({ loginData }) => {
     </div>
     <form onSubmit={loginData.handleLogin} style={usedLoginStyle}>
       <h3>Login</h3>
+      {loginData.login
+        ? <div></div>
+        : errorMessage}
       <p>username:</p>
       <input type='text' value={loginData.username} name='username' onChange={({ target }) => loginData.setUsername(target.value)} />
       <br />
@@ -61,6 +75,9 @@ const Login = ({ loginData }) => {
     </form>
     <form onSubmit={loginData.handleSignup} style={usedSignupStyle}>
       <h3>Signup</h3>
+      {loginData.login
+        ? <div></div>
+        : errorMessage}
       <p>username:</p>
       <input type='text' value={loginData.newUsername} name='username' onChange={({ target }) => loginData.setNewUsername(target.value)} />
       <br />
@@ -69,6 +86,8 @@ const Login = ({ loginData }) => {
       <br/>
       <p>retype password:</p>
       <input type='password' value={loginData.passwordCheck} name='password' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
+      <p>your name:</p>
+      <input type='text' value={loginData.newName} name='name' onChange={({ target }) => loginData.setNewName(target.value)} />
       <button type="submit">sign up</button>
     </form>
   </div>

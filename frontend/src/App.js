@@ -12,9 +12,10 @@ function App() {
   const [password, setPassword] = useState('')
   const [newUsername, setNewUsername] = useState('')
   const [newPassword, setNewPassword] = useState('')
+  const [newName, setNewName] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
   const [login, setLogin] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState([])
 
   const handleLogin = event => {
     event.preventDefault()
@@ -24,7 +25,10 @@ function App() {
   const handleSignup = async event => {
     event.preventDefault()
     console.log('handleSignup')
-    setErrorMessage(await loginService.createUser(newUsername, newPassword))
+    await loginService.createUser({ newUsername, newPassword, newName })
+      .then(result => console.log(result))
+      .catch(error => console.log(error))
+    setErrorMessage([])
   }
 
   const loginData = {
@@ -36,6 +40,8 @@ function App() {
     setNewUsername: setNewUsername,
     newPassword: newPassword,
     setNewPassword: setNewPassword,
+    newName: newName,
+    setNewName: setNewName,
     passwordCheck: passwordCheck,
     setPasswordCheck: setPasswordCheck,
     login: login,

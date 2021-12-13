@@ -4,10 +4,9 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL
   ? process.env.REACT_APP_API_URL + '/users'
   : 'http://localhost:1234/api/users'
 
-const createUser = async (username, password) => {
-  console.log(username, password)
+const createUser = async (userDetails) => {
   try {
-    return (await axios.post('/', { username: username, password: password }, { headers:{} })).data
+    return (await axios.post('/', { username: userDetails.newUsername, password: userDetails.newPassword, name: userDetails.newName }, { headers:{} })).data
   } catch(error) {
     return error.message
   }

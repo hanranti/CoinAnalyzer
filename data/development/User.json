@@ -1,0 +1,44 @@
+[
+    {
+      "username": "Harrison",
+      "passwordHash": "zxcvbnm",
+      "name": "Bond Stokes",
+      "createdAt": "2019-10-27T11:27:08 -02:00",
+      "updatedAt": "2020-06-25T02:12:29 -03:00"
+    },
+    {
+      "username": "Sidman",
+      "passwordHash": "zxcvbnm",
+      "name": "Herrera Mcfadden",
+      "createdAt": "2019-05-31T02:37:18 -03:00",
+      "updatedAt": "2021-01-07T03:39:59 -02:00"
+    },
+    {
+      "username": "Sugartown",
+      "passwordHash": "qwertyuiop",
+      "name": "Lyons Chaney",
+      "createdAt": "2019-12-28T01:01:38 -02:00",
+      "updatedAt": "2014-07-07T10:47:36 -03:00"
+    },
+    {
+      "username": "Mooresburg",
+      "passwordHash": "qwertyuiop",
+      "name": "Leah Aguilar",
+      "createdAt": "2018-04-20T02:04:36 -03:00",
+      "updatedAt": "2021-09-18T06:15:46 -03:00"
+    },
+    {
+      "username": "Idamay",
+      "passwordHash": "asdfghjkl",
+      "name": "Sherman Greene",
+      "createdAt": "2021-06-27T08:03:48 -03:00",
+      "updatedAt": "2019-06-29T11:31:09 -03:00"
+    },
+    {
+      "username": "Driftwood",
+      "passwordHash": "zxcvbnm",
+      "name": "Martha Boone",
+      "createdAt": "2020-12-24T12:27:13 -02:00",
+      "updatedAt": "2017-03-31T04:44:38 -03:00"
+    }
+  ]

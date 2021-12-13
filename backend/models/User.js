@@ -1,11 +1,10 @@
 module.exports = (sequelize, DataTypes) => sequelize.define('user', {
-  id: {
+  username: {
     type: DataTypes.STRING,
     primaryKey: true
   },
-  username: DataTypes.STRING,
   passwordHash: DataTypes.STRING,
-  name: DataTypes.STRING,
+  name: DataTypes.STRING
 }, {
   freezeTableName: true
 })
