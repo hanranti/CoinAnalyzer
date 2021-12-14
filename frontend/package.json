@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "chart.js": "^3.6.2",
+    "concurrently": "^6.4.0",
     "primeicons": "^5.0.0",
     "primereact": "^7.0.1",
     "react": "^17.0.2",
@@ -22,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint-fix": "eslint --fix ."
+    "lint-fix": "eslint --fix .",
+    "start:staging": "concurrently \"react-scripts start\" cd ../backend && npm start"
   },
   "eslintConfig": {
     "extends": [
