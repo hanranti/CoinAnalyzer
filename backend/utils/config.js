@@ -1,10 +1,11 @@
 require('dotenv').config()
 
-const PORT = process.env.BACKEND_PORT || '1234'
+const PORT = process.env.PORT
 const db_host = process.env.DB_HOST
 const db_name = process.env.DB_NAME
 const db_user = process.env.DB_USERNAME
 const postgres_password = process.env.POSTGRES_PASSWORD
+const staging = process.env.STAGING
 
 const dialect = 'postgres'
 
@@ -21,6 +22,7 @@ module.exports = {
   db_name,
   db_user,
   postgres_password,
+  staging,
   dialect,
   pool
 }

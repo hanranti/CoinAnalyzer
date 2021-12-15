@@ -23,9 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint-fix": "eslint --fix .",
-    "start:staging": "concurrently \"react-scripts start\" cd ../backend && npm start"
+    "lint-fix": "eslint --fix ."
   },
+  "proxy": "http://localhost:1234",
   "eslintConfig": {
     "extends": [
       "react-app",

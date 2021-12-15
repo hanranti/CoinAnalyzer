@@ -1,9 +1,10 @@
 set -e;
 
-cd backend;
+cd frontend;
 npm run lint-fix;
-cd ../frontend;
+cd ../backend;
 npm run lint-fix;
+npm run build:ui
 
 git add -A;
 git status;

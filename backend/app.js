@@ -17,6 +17,8 @@ app.use(morgan(':body'))
 
 app.use('/api/users', require('./routers/usersRouter'))
 
+app.use(express.static('build'))
+
 app.use((req, res) => res.status(404).send({ error: 'Nothing here!' }))
 
 app.use((error, req, res, next) => {
