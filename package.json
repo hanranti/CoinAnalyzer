@@ -1,1 +1,20 @@
-{}
+{
+  "name": "coinanalyzer",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "heroku-prebuild": "cd frontend && npm install && cd ../backend && npm install && npm run build:ui",
+    "start": "cd backend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanranti/CoinAnalyzer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanranti/CoinAnalyzer/issues"
+  },
+  "homepage": "https://github.com/hanranti/CoinAnalyzer#readme"
+}
