@@ -4,10 +4,14 @@ const { Op } = require('sequelize')
 const User = db.User
 
 const findAllUsers = async () => {
-  const allUsers = await User.findAll({
-    attributes: ['username']
-  })
-  return allUsers
+  try{
+    const allUsers = await User.findAll({
+      attributes: ['username']
+    })
+    return allUsers
+  } catch(error) {
+    return error
+  }
 }
 
 const createUser = async ({ username, password, name }) => {
