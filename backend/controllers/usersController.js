@@ -3,6 +3,16 @@ const db = require('../models')
 const { Op } = require('sequelize')
 const User = db.User
 
+const findAllUsers = async () => {
+  const allUsers = await User.findAll({
+    attributes: [
+      'username',
+      'name'
+    ]
+  })
+  return allUsers
+}
+
 const createUser = async ({ username, password, name }) => {
   const error = (await User.findAll({
     where: {
@@ -40,5 +50,6 @@ const createUser = async ({ username, password, name }) => {
 }
 
 module.exports = {
+  findAllUsers,
   createUser
 }
