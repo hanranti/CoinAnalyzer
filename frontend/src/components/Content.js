@@ -5,7 +5,12 @@ import Login from './Login'
 const Content = ({ contentData }) => {
 
   return <div className='body'>
-    <Login loginData={contentData.loginData} />
+    {
+      contentData.user
+        ? <div>
+        </div>
+        : <Login loginData={contentData.loginData} />
+    }
   </div>
 }
 
