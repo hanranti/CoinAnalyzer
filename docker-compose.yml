@@ -27,20 +27,5 @@ services:
         command: npm run dev
         container_name: coin-analyzer-backend
 
-    coin-analyzer-frontend:
-        build:
-            context: frontend
-            args:
-                NODE_ENV: "development"
-        ports:
-            - 80:80
-        env_file: ./.env
-        depends_on:
-            - coin-analyzer-backend
-        volumes:
-            - ./frontend:/usr/src/app
-        command: npm start
-        container_name: coin-analyzer-frontend
-
 volumes:
     database-data:

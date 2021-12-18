@@ -2,7 +2,7 @@ const db = require('../../backend/models')
 const sequelize = db.sequelize
 
 const init = async () => {
-  const JSONDATA = require('./development/User.json')
+  const JSONDATA = require('./test/User.json')
   await sequelize.query('DROP TABLE IF EXISTS "user"')
   await sequelize.query('CREATE TABLE "user" ("username" TEXT PRIMARY KEY, "passwordHash" TEXT, "name" TEXT, "createdAt" DATE, "updatedAt" DATE)')
   for (const e of JSONDATA) {

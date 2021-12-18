@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt')
 const db = require('../models')
 const { Op } = require('sequelize')
-const User = db.User
+const user = db.user
 
 const findAllUsers = async () => {
   try{
-    const allUsers = await User.findAll({
+    const allUsers = await user.findAll({
       attributes: ['username']
     })
     return allUsers
@@ -15,7 +15,7 @@ const findAllUsers = async () => {
 }
 
 const createUser = async ({ username, password, name }) => {
-  const error = (await User.findAll({
+  const error = (await user.findAll({
     where: {
       username: {
         [Op.eq]: username
@@ -41,7 +41,7 @@ const createUser = async ({ username, password, name }) => {
   } else {
     const passwordHash = await bcrypt.hash(password, 15)
 
-    const newUser = new User({
+    const newUser = new user({
       username: username,
       name: name,
       passwordHash

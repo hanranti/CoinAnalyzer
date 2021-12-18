@@ -42,7 +42,7 @@ const sequelize = config.staging
 const db = {
   sequelize: sequelize,
   Sequelize: Sequelize,
-  User: require('./User')(sequelize, Sequelize)
+  user: require('./user')(sequelize, Sequelize)
 }
 
 module.exports = db

@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost/api/users'
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
+  ? 'http://localhost:1234/api/users'
+  : 'http://localhost/api/users'
 
 const createUser = async (userDetails) => {
   try {
