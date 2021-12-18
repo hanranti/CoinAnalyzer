@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "cd frontend && npm install && cd ../backend && npm install && npm run build:ui",
+    "heroku-prebuild": "sh ./scripts/initializeProduction.sh",
     "start": "cd backend && STAGING=1 npm start"
   },
   "repository": {
