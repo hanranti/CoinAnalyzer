@@ -2,4 +2,4 @@
 
 cd data/populate/
 
-node populateProduction.js
+STAGING=1 node populateProduction.js
