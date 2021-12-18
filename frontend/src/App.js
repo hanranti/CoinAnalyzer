@@ -8,7 +8,7 @@ import Content from './components/Content'
 import userService from './services/userService'
 
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [newUsername, setNewUsername] = useState('')
@@ -31,7 +31,7 @@ function App() {
   }
 
   const handleLogout = async () => {
-    setUser({})
+    setUser(false)
   }
 
   const handleSignup = async event => {

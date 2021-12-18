@@ -6,6 +6,7 @@ const db_name = process.env.DB_NAME
 const db_user = process.env.DB_USERNAME
 const postgres_password = process.env.POSTGRES_PASSWORD
 const staging = process.env.STAGING
+const secret = process.env.SECRET
 
 const dialect = 'postgres'
 
@@ -23,6 +24,7 @@ module.exports = {
   db_user,
   postgres_password,
   staging,
+  secret,
   dialect,
   pool
 }

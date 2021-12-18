@@ -11,10 +11,14 @@ app.use(cors())
 
 app.use(express.json())
 
+const middleware = require('./utils/middleware')
+app.use(middleware.requireToken)
+
 morgan.token('body', (req) => JSON.stringify(req.body))
 app.use(morgan('tiny'))
 app.use(morgan(':body'))
 
+app.use('/', require('./routers/loginRouter'))
 app.use('/api/users', require('./routers/usersRouter'))
 
 app.use(express.static('build'))
