@@ -2,7 +2,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
   ? 'http://localhost:1234/api/users'
-  : 'http://localhost/api/users'
+  : 'https://coinanalyzer.herokuapp.com/api/users'
 
 const createUser = async (userDetails) => {
   try {
