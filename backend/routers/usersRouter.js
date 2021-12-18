@@ -11,7 +11,7 @@ router.post('/login', async (req, res) => {
   const result = await usersController.login(req.body)
   result.errors
     ? res.status(401).json(result.errors)
-    : res.status(200).json({ message: 'Logged in!' })
+    : res.status(200).json({ result, username: req.body.username })
 })
 
 router.post('/', async (req, res) => {

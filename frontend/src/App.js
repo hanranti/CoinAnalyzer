@@ -24,6 +24,8 @@ function App() {
       .then(result => {
         setUser(result)
         setErrorMessage([])
+        setUsername('')
+        setPassword('')
       })
       .catch(error => setErrorMessage(error))
   }
@@ -31,7 +33,11 @@ function App() {
   const handleSignup = async event => {
     event.preventDefault()
     await userService.createUser({ newUsername, newPassword, newName })
-      .then(() => setErrorMessage([]))
+      .then(() => {
+        setErrorMessage([])
+        setNewUsername('')
+        setNewPassword('')
+      })
       .catch(error => setErrorMessage(error))
   }
 
