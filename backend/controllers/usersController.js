@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const db = require('../models')
 const { Op } = require('sequelize')
@@ -12,6 +13,31 @@ const findAllUsers = async () => {
   } catch(error) {
     return error
   }
+}
+
+const login = async ({ username, password }) => {
+  const foundUser = await user.findOne({
+    attributes: ['username', 'passwordHash'],
+    where: {
+      username: username
+    }
+  })
+
+  const passwordCorrect = !foundUser
+    ? false
+    : await bcrypt.compare(password, foundUser.passwordHash)
+
+  const error = !(foundUser && passwordCorrect)
+    ?  { errors: ['Invalid username or password!'] }
+    : false
+
+  const userForToken = {
+    username: username
+  }
+
+  return error
+    ? error
+    : jwt.sign(userForToken, process.env.SECRET)
 }
 
 const createUser = async ({ username, password, name }) => {
@@ -52,5 +78,6 @@ const createUser = async ({ username, password, name }) => {
 
 module.exports = {
   findAllUsers,
+  login,
   createUser
 }

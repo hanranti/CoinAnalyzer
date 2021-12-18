@@ -7,6 +7,13 @@ router.get('/', async (req, res) => {
   res.status(200).json(allUsers)
 })
 
+router.post('/login', async (req, res) => {
+  const result = await usersController.login(req.body)
+  result.errors
+    ? res.status(401).json(result.errors)
+    : res.status(200).json({ message: 'Logged in!' })
+})
+
 router.post('/', async (req, res) => {
   const error = await usersController.createUser(req.body)
   console.log(error)

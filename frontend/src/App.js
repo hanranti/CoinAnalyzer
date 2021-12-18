@@ -5,9 +5,10 @@ import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import Topbar from './components/Topbar'
 import Content from './components/Content'
-import loginService from './services/loginService'
+import userService from './services/userService'
 
 function App() {
+  const [user, setUser] = useState({})
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [newUsername, setNewUsername] = useState('')
@@ -17,18 +18,21 @@ function App() {
   const [login, setLogin] = useState(true)
   const [errorMessage, setErrorMessage] = useState([])
 
-  const handleLogin = event => {
+  const handleLogin = async event => {
     event.preventDefault()
-    console.log('logged in')
+    await userService.login({ username, password })
+      .then(result => {
+        setUser(result)
+        setErrorMessage([])
+      })
+      .catch(error => setErrorMessage(error))
   }
 
   const handleSignup = async event => {
     event.preventDefault()
-    console.log('handleSignup')
-    await loginService.createUser({ newUsername, newPassword, newName })
-      .then(result => console.log(result))
-      .catch(error => console.log(error))
-    setErrorMessage([])
+    await userService.createUser({ newUsername, newPassword, newName })
+      .then(() => setErrorMessage([]))
+      .catch(error => setErrorMessage(error))
   }
 
   const loginData = {
@@ -52,12 +56,17 @@ function App() {
   }
 
   const contentData = {
-    loginData: loginData
+    loginData: loginData,
+    user: user
+  }
+
+  const topBarData = {
+    user: user
   }
 
   return <div>
     <Router basename={process.env.REACT_APP_ROUTER_BASENAME}>
-      <Topbar></Topbar>
+      <Topbar topBarData={topBarData}></Topbar>
       <Content contentData={contentData}></Content>
     </Router>
   </div>
