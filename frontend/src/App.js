@@ -30,6 +30,10 @@ function App() {
       .catch(error => setErrorMessage(error))
   }
 
+  const handleLogout = async () => {
+    setUser({})
+  }
+
   const handleSignup = async event => {
     event.preventDefault()
     await userService.createUser({ newUsername, newPassword, newName })
@@ -67,7 +71,8 @@ function App() {
   }
 
   const topBarData = {
-    user: user
+    user: user,
+    handleLogout: handleLogout
   }
 
   return <div>
