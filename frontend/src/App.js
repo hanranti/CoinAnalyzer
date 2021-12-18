@@ -37,7 +37,7 @@ function App() {
 
   const loginData = {
     username: username,
-    serUsername: setUsername,
+    setUsername: setUsername,
     password: password,
     setPassword: setPassword,
     newUsername: newUsername,
