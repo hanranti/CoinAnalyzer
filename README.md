@@ -1,3 +1,3 @@
 # CoinAnalyzer
 
-This app is running in [https://coinanalyzer.herokuapp.com/](heroku).
+This app is running in [heroku](https://coinanalyzer.herokuapp.com/).
