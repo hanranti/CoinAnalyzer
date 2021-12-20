@@ -5,7 +5,7 @@ import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import Topbar from './components/Topbar'
 import Content from './components/Content'
-import userService from './services/userService'
+import loginService from './services/loginService'
 
 function App() {
   const [user, setUser] = useState(false)
@@ -20,29 +20,18 @@ function App() {
 
   const handleLogin = async event => {
     event.preventDefault()
-    await userService.login({ username, password })
-      .then(result => {
-        setUser(result)
-        setErrorMessage([])
-        setUsername('')
-        setPassword('')
-      })
-      .catch(error => setErrorMessage(error))
+    await loginService.login({ username, password }, { setUser, setErrorMessage, setUsername, setPassword })
   }
 
-  const handleLogout = async () => {
+  const handleLogout = async event => {
+    event.preventDefault()
+    window.localStorage.removeItem('loggedCoinAnalyzer')
     setUser(false)
   }
 
   const handleSignup = async event => {
     event.preventDefault()
-    await userService.createUser({ newUsername, newPassword, newName })
-      .then(() => {
-        setErrorMessage([])
-        setNewUsername('')
-        setNewPassword('')
-      })
-      .catch(error => setErrorMessage(error))
+    await loginService.createUser({ newUsername, newPassword, newName }, { setErrorMessage, setNewUsername, setNewPassword, setPasswordCheck, setNewName })
   }
 
   const loginData = {
@@ -61,23 +50,23 @@ function App() {
     login: login,
     setLogin: setLogin,
     handleLogin: handleLogin,
-    handleSignup: handleSignup,
-    errorMessage: errorMessage
+    handleSignup: handleSignup
   }
 
   const contentData = {
     loginData: loginData,
-    user: user
+    user: user,
+    errorMessage: errorMessage
   }
 
-  const topBarData = {
+  const topbarData = {
     user: user,
     handleLogout: handleLogout
   }
 
   return <div>
     <Router basename={process.env.REACT_APP_ROUTER_BASENAME}>
-      <Topbar topBarData={topBarData}></Topbar>
+      <Topbar topbarData={topbarData}></Topbar>
       <Content contentData={contentData}></Content>
     </Router>
   </div>

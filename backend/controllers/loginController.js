@@ -6,7 +6,7 @@ const user = db.user
 
 const login = async ({ username, password }) => {
   const foundUser = await user.findOne({
-    attributes: ['username', 'passwordHash'],
+    attributes: ['username', 'passwordHash', 'name'],
     where: {
       username: username
     }
@@ -21,12 +21,13 @@ const login = async ({ username, password }) => {
     : false
 
   const userForToken = {
-    username: username
+    username: username,
+    name: foundUser.name
   }
 
-  return error
+  return error.errors.length > 0
     ? error
-    : jwt.sign(userForToken, process.env.SECRET)
+    : [jwt.sign(userForToken, process.env.SECRET), userForToken.username, userForToken.name]
 }
 
 const createUser = async ({ username, password, name }) => {
