@@ -1,9 +1,5 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test'
-  ? 'http://localhost:1234/api/users'
-  : 'https://coinanalyzer.herokuapp.com/'
-
 const login = async (userDetails, setters) => {
   try{
     const data =  (await axios.post('/login', { username: userDetails.username, password: userDetails.password }, { headers:{} })).data
@@ -15,7 +11,7 @@ const login = async (userDetails, setters) => {
     setters.setUsername('')
     setters.setPassword('')
   }catch(error) {
-    setters.setErrorMessage(error.response.data)
+    setters.setErrorMessage(error.response.data.errors)
   }
 }
 

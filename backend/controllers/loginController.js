@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const config = require('../utils/config')
 const db = require('../models')
 const { Op } = require('sequelize')
 const user = db.user
@@ -11,6 +12,7 @@ const login = async ({ username, password }) => {
       username: username
     }
   })
+  console.log(foundUser)
 
   const passwordCorrect = !foundUser
     ? false
@@ -20,14 +22,14 @@ const login = async ({ username, password }) => {
     ?  { errors: ['Invalid username or password!'] }
     : false
 
-  const userForToken = {
-    username: username,
-    name: foundUser.name
-  }
-
-  return error.errors.length > 0
+  return error
     ? error
-    : [jwt.sign(userForToken, process.env.SECRET), userForToken.username, userForToken.name]
+    : [jwt.sign({
+      username: username,
+      name: foundUser.name
+    }, config.secret),
+    foundUser.username,
+    foundUser.name]
 }
 
 const createUser = async ({ username, password, name }) => {
@@ -63,6 +65,7 @@ const createUser = async ({ username, password, name }) => {
       passwordHash
     })
     await newUser.save()
+    return false
   }
 }
 
