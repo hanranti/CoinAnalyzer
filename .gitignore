@@ -1,4 +1,5 @@
 .env
+/node_modules
 /backend/.env
 /data/populate/.env
 /frontend/node_modules

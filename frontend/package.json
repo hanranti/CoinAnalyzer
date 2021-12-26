@@ -25,7 +25,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint --fix ."
   },
-  "proxy": "",
+  "proxy": "http://localhost:1234/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^9.1.1",
     "eslint": "^7.32.0",
     "eslint-plugin-jest": "^24.7.0",
     "jest-canvas-mock": "^2.3.1"

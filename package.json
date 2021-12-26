@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hanranti/CoinAnalyzer/issues"
   },
-  "homepage": "https://github.com/hanranti/CoinAnalyzer#readme"
+  "homepage": "https://github.com/hanranti/CoinAnalyzer#readme",
+  "devDependencies": {
+    "cypress": "^9.2.0"
+  }
 }

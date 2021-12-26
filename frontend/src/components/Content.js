@@ -4,6 +4,8 @@ import Login from './Login'
 
 const Content = ({ contentData }) => {
 
+  console.log(contentData)
+
   const errorStyle = {
     'color': '#ff6400',
     'backgroundColor': '#9f0195',
@@ -27,7 +29,7 @@ const Content = ({ contentData }) => {
         ? <div>
           <h3>Coin analyzers:</h3>
           <ul>
-            {contentData.users.map(u => {<li key={u.username}>u.username</li>})}
+            {contentData.users.map(u => (<li key={u.username}>{u.username}</li>))}
           </ul>
         </div>
         : <Login loginData={contentData.loginData} />

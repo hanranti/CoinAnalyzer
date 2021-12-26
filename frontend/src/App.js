@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     if (user){
-      dataService.getAllUsers(user.token, { setUsers, setErrorMessage })
+      dataService.getAllUsers({ setUsers, setErrorMessage })
     }
   }, [user])
 
