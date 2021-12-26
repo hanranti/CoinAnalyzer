@@ -19,7 +19,10 @@ const getAllUsers = async (setters) => {
     console.log(res.data)
     setters.setUsers(res.data)
   } catch(error) {
-    setters.setErrorMessage(error.response.data.errors)
+    console.log(error)
+    if (error.message.includes('403')) {
+      setters.setErrorMessage(error.response.data.errors)
+    }
   }
 }
 
