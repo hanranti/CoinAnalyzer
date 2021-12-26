@@ -1,6 +1,21 @@
 const jwt = require('jsonwebtoken')
 const config = require('./config')
 
+const errorHandler = (error, req, res, next) => {
+  switch (error.name) {
+  case 'CastError':
+    return res.status(400).send({
+      errors: ['Id of item is malformed!']
+    })
+  case 'JsonWebTokenError':
+    return res.status(401).json({
+      errors: ['Token is not valid!']
+    })
+  default:
+    next()
+  }
+}
+
 const getToken = req => {
   const authorization = req.get('authorization')
   console.log(authorization)
@@ -12,13 +27,7 @@ const getToken = req => {
 const requireToken = (req, res, next) => {
   console.log('requireToken')
   const token = getToken(req)
-  console.log(token)
-  console.log(!token)
-  console.log(config.secret)
-  const decodedToken = token ? jwt.verify(token, config.secret) : false
-  console.log(decodedToken)
-  console.log(!decodedToken)
-  if(req.url.includes('/api') && (!token || !decodedToken)) {
+  if(req.url.includes('/api') && (!token || !jwt.verify(token, config.secret))) {
     res.status(401).json({ errors: ['Please log in!'] })
   } else {
     next()
@@ -26,5 +35,6 @@ const requireToken = (req, res, next) => {
 }
 
 module.exports = {
+  errorHandler,
   requireToken
 }
