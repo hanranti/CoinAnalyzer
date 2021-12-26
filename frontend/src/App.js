@@ -1,4 +1,4 @@
-import React, { /**useEffect,*/ useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import 'primereact/resources/themes/md-dark-deeppurple/theme.css'
 import 'primereact/resources/primereact.min.css'
@@ -6,6 +6,7 @@ import 'primeicons/primeicons.css'
 import Topbar from './components/Topbar'
 import Content from './components/Content'
 import loginService from './services/loginService'
+import dataService from './services/dataService'
 
 function App() {
   const [user, setUser] = useState(false)
@@ -17,10 +18,25 @@ function App() {
   const [passwordCheck, setPasswordCheck] = useState('')
   const [login, setLogin] = useState(true)
   const [errorMessage, setErrorMessage] = useState([])
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    const localUser = window.localStorage.getItem('loggedCoinAnalyzer')
+    localUser ? setUser(JSON.parse(localUser)) : false
+  }, [])
+
+  useEffect(() => {
+    if (user){
+      dataService.getAllUsers(user.token, { setUsers, setErrorMessage })
+    }
+  }, [user])
 
   const handleLogin = async event => {
     event.preventDefault()
-    await loginService.login({ username, password }, { setUser, setErrorMessage, setUsername, setPassword })
+    await loginService.login({ username, password }, { setUser, setErrorMessage, setUsername, setPassword, setToken: dataService.setToken })
+    window.localStorage.setItem(
+      'loggedCoinAnalyzer', JSON.stringify(user)
+    )
   }
 
   const handleLogout = async event => {
@@ -56,7 +72,8 @@ function App() {
   const contentData = {
     loginData: loginData,
     user: user,
-    errorMessage: errorMessage
+    errorMessage: errorMessage,
+    users: users
   }
 
   const topbarData = {

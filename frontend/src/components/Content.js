@@ -25,6 +25,10 @@ const Content = ({ contentData }) => {
     {
       contentData.user
         ? <div>
+          <h3>Coin analyzers:</h3>
+          <ul>
+            {contentData.users.map(u => {<li key={u.username}>u.username</li>})}
+          </ul>
         </div>
         : <Login loginData={contentData.loginData} />
     }

@@ -13,6 +13,7 @@ const login = async ({ username, password }) => {
     }
   })
   console.log(foundUser)
+  console.log(foundUser.name)
 
   const passwordCorrect = !foundUser
     ? false
@@ -25,8 +26,7 @@ const login = async ({ username, password }) => {
   return error
     ? error
     : [jwt.sign({
-      username: username,
-      name: foundUser.name
+      username: foundUser.username
     }, config.secret),
     foundUser.username,
     foundUser.name]
