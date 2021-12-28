@@ -5,6 +5,9 @@ npm run lint-fix;
 cd ../backend;
 npm run lint-fix;
 npm run build:ui
+cd ..
+
+./scripts/runTests.sh
 
 git add -A;
 git status;
