@@ -18,18 +18,26 @@ const errorHandler = (error, req, res, next) => {
 
 const getToken = req => {
   const authorization = req.get('authorization')
-  console.log(authorization)
   return authorization && authorization.toLowerCase().startsWith('bearer ')
     ? authorization.substring(7)
-    : null
+    : false
 }
 
 const requireToken = (req, res, next) => {
-  console.log('requireToken')
+  console.log(req.url)
   const token = getToken(req)
-  if(req.url.includes('/api') && (!token || !jwt.verify(token, config.secret))) {
-    res.status(401).json({ errors: ['Please log in!'] })
+  if(req.url.includes('/api')) {
+    try{
+      console.log('try')
+      jwt.verify(token, config.secret)
+        ? next()
+        : res.status(401).json({ errors: ['Please log in!'] })
+    } catch(error){
+      console.log(error)
+      res.status(401).json({ errors: ['Please log in!'] })
+    }
   } else {
+    console.log('else')
     next()
   }
 }

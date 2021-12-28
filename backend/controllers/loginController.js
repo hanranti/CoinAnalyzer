@@ -12,15 +12,13 @@ const login = async ({ username, password }) => {
       username: username
     }
   })
-  console.log(foundUser)
-  console.log(foundUser.name)
 
   const passwordCorrect = !foundUser
     ? false
     : await bcrypt.compare(password, foundUser.passwordHash)
 
   const error = !(foundUser && passwordCorrect)
-    ?  { errors: ['Invalid username or password!'] }
+    ? { errors: ['Invalid username or password!'] }
     : false
 
   return error

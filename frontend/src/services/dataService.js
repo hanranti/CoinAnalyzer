@@ -16,10 +16,8 @@ const getAllUsers = async (setters) => {
   console.log(token)
   try {
     const res = await axios.get(`${apiUrl}/users`, getConfig())
-    console.log(res.data)
     setters.setUsers(res.data)
   } catch(error) {
-    console.log(error)
     if (error.message.includes('403')) {
       setters.setErrorMessage(error.response.data.errors)
     }

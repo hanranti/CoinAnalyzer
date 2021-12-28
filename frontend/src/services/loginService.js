@@ -5,7 +5,6 @@ const login = async (userDetails, setters) => {
     const data =  (await axios.post('/login', { username: userDetails.username, password: userDetails.password }, { headers:{} })).data
     setters.setToken(data.token)
     setters.setUser(data)
-    console.log(data)
     setters.setErrorMessage([])
     setters.setUsername('')
     setters.setPassword('')

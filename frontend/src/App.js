@@ -31,6 +31,10 @@ function App() {
     }
   }, [user])
 
+  useEffect(() => {
+    setTimeout(() => setErrorMessage([]), 10000)
+  }, [errorMessage])
+
   const handleLogin = async event => {
     event.preventDefault()
     await loginService.login({ username, password }, { setUser, setErrorMessage, setUsername, setPassword, setToken: dataService.setToken })

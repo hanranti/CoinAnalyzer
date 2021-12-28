@@ -22,9 +22,9 @@ describe('requireToken tests', () => {
 
   test('authentication is not passed with fake token', () => {
     mockReq = mocks.createRequest({
+      method: 'GET',
+      url: '/api/users',
       headers: {
-        method: 'GET',
-        url: '/api/users',
         Authorization: 'Bearer beagleboys'
       }
     })
