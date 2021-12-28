@@ -57,7 +57,7 @@ const Login = ({ loginData }) => {
       <br />
       <p>password:</p>
       <input type='password' value={loginData.password} name='password' onChange={({ target }) => loginData.setPassword(target.value)} />
-      <button type="submit">login</button>
+      <button type="submit" disabled={loginData.login}>login</button>
     </form>
     <form onSubmit={loginData.handleSignup} style={usedSignupStyle}>
       <h3>Signup</h3>
@@ -71,7 +71,7 @@ const Login = ({ loginData }) => {
       <input type='password' value={loginData.passwordCheck} name='password' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
       <p>your name:</p>
       <input type='text' value={loginData.newName} name='name' onChange={({ target }) => loginData.setNewName(target.value)} />
-      <button type="submit">sign up</button>
+      <button type="submit" disabled={!loginData.login}>sign up</button>
     </form>
   </div>
 }
