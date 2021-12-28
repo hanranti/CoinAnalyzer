@@ -47,5 +47,12 @@
       "name": "Vance Zimmerman",
       "createdAt": "2014-12-24T01:00:06 -02:00",
       "updatedAt": "2014-01-10T03:16:57 -02:00"
+    },
+    {
+      "username": "RealTestUser",
+      "passwordHash": "$2b$15$sIA9TN4qedf34dmyIxPwV.sw3pofTT696gLjMC3hgluXhIYVjtmFm",
+      "name": "Unknown",
+      "createdAt": "2015-07-13T02:07:15 -03:00",
+      "updatedAt": "2018-02-25T06:04:17 -02:00"
     }
   ]
