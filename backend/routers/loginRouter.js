@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
   const error = await loginController.createUser(req.body)
   error
     ? res.status(400).send(error)
-    : res.status(200).json({ created: true })
+    : res.status(201).json({ created: true })
 })
 
 module.exports = router
