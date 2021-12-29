@@ -30,4 +30,5 @@ jobs:
         cp .env data/populate/.env
 
     - name: run setup/test script
+      run: |
         ./scripts/runTests.sh
