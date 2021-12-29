@@ -14,16 +14,23 @@ const login = async (userDetails, setters) => {
 }
 
 const createUser = async (userDetails, setters) => {
-  try {
-    const data = (await axios.post('/signup', { username: userDetails.newUsername, password: userDetails.newPassword, name: userDetails.newName }, { headers:{} })).data
-    setters.setErrorMessage([])
-    setters.setNewUsername('')
+  console.log(userDetails)
+  if(userDetails.passwordCheck !== userDetails.newPassword) {
+    setters.setErrorMessage(['Passwords were not the same!'])
     setters.setNewPassword('')
     setters.setPasswordCheck('')
-    setters.setNewName('')
-    return data
-  } catch(error) {
-    setters.setErrorMessage(error.response.data.errors)
+  } else{
+    try {
+      const data = (await axios.post('/signup', { username: userDetails.newUsername, password: userDetails.newPassword, name: userDetails.newName }, { headers:{} })).data
+      setters.setErrorMessage([])
+      setters.setNewUsername('')
+      setters.setNewPassword('')
+      setters.setPasswordCheck('')
+      setters.setNewName('')
+      return data
+    } catch(error) {
+      setters.setErrorMessage(error.response.data.errors)
+    }
   }
 }
 

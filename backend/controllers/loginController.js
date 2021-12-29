@@ -53,7 +53,6 @@ const createUser = async ({ username, password, name }) => {
         : false
 
   if(error.errors.length > 0) {
-    console.log(error)
     return error
   } else {
     const passwordHash = await bcrypt.hash(password, 15)

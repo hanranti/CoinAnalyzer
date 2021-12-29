@@ -4,8 +4,6 @@ import Login from './Login'
 
 const Content = ({ contentData }) => {
 
-  console.log(contentData)
-
   const errorStyle = {
     'color': '#ff6400',
     'backgroundColor': '#9f0195',

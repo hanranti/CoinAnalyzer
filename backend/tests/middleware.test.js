@@ -42,7 +42,6 @@ describe('requireToken tests', () => {
 
   test('authentication is passed with real token', () => {
     const token = createValidToken('realTokenGuy')
-    console.log(token)
     mockReq = mocks.createRequest({
       method: 'GET',
       url: '/api/users',

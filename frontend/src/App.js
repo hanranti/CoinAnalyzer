@@ -32,7 +32,9 @@ function App() {
   }, [user])
 
   useEffect(() => {
-    setTimeout(() => setErrorMessage([]), 10000)
+    if(errorMessage !== ''){
+      setTimeout(() => setErrorMessage([]), 10000)
+    }
   }, [errorMessage])
 
   const handleLogin = async event => {
@@ -53,7 +55,7 @@ function App() {
 
   const handleSignup = async event => {
     event.preventDefault()
-    await loginService.createUser({ newUsername, newPassword, newName }, { setErrorMessage, setNewUsername, setNewPassword, setPasswordCheck, setNewName })
+    await loginService.createUser({ newUsername, newPassword, passwordCheck, newName }, { setErrorMessage, setNewUsername, setNewPassword, setPasswordCheck, setNewName })
   }
 
   const loginData = {

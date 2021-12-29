@@ -13,7 +13,6 @@ const getConfig = () => ({
 })
 
 const getAllUsers = async (setters) => {
-  console.log(token)
   try {
     const res = await axios.get(`${apiUrl}/users`, getConfig())
     setters.setUsers(res.data)
