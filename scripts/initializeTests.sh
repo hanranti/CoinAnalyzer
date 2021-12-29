@@ -1,5 +1,3 @@
-./scripts/installAndBuild.sh
-
 docker-compose down
 docker-compose up -d coin-analyzer-db
 sleep 5

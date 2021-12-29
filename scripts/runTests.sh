@@ -1,3 +1,5 @@
+./scripts/installAndBuild.sh
+
 cd backend
 npm test
 cd ../frontend
