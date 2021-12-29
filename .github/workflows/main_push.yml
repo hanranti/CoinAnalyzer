@@ -1,0 +1,33 @@
+name: MAIN PUSH
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    stategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - name: setup actions
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: setup .env
+      run: |
+        cp example.env .env
+        cp .env backend/.env
+        cp .env data/populate/.env
+
+    - name: run setup/test script
+        ./scripts/runTests.sh
