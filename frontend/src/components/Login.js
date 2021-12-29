@@ -47,20 +47,20 @@ const Login = ({ loginData }) => {
 
   return <div style={formStyle}>
     <div style={{ 'textAlign': 'center' }}>
-      <p>Switch login/signup</p>
-      <InputSwitch checked={loginData.login} onChange={() => loginData.setLogin(!loginData.login)} />
+      <p name='loginLabel'>Switch login/signup</p>
+      <InputSwitch checked={loginData.login} onChange={() => loginData.setLogin(!loginData.login)} name='loginSwitch' />
     </div>
     <form onSubmit={loginData.handleLogin} style={usedLoginStyle}>
-      <h3>Login</h3>
+      <h3>Sign in</h3>
       <p>username:</p>
       <input type='text' value={loginData.username} name='username' onChange={({ target }) => loginData.setUsername(target.value)} />
       <br />
       <p>password:</p>
       <input type='password' value={loginData.password} name='password' onChange={({ target }) => loginData.setPassword(target.value)} />
-      <button type="submit" disabled={loginData.login}>login</button>
+      <button type="submit" disabled={loginData.login} name='login' >login</button>
     </form>
     <form onSubmit={loginData.handleSignup} style={usedSignupStyle}>
-      <h3>Signup</h3>
+      <h3>Sign up</h3>
       <p>username:</p>
       <input type='text' value={loginData.newUsername} name='username' onChange={({ target }) => loginData.setNewUsername(target.value)} />
       <br />
@@ -68,10 +68,10 @@ const Login = ({ loginData }) => {
       <input type='password' value={loginData.newPassword} name='password' onChange={({ target }) => loginData.setNewPassword(target.value)} />
       <br/>
       <p>retype password:</p>
-      <input type='password' value={loginData.passwordCheck} name='password' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
+      <input type='password' value={loginData.passwordCheck} name='passwordCheck' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
       <p>your name:</p>
       <input type='text' value={loginData.newName} name='name' onChange={({ target }) => loginData.setNewName(target.value)} />
-      <button type="submit" disabled={!loginData.login}>sign up</button>
+      <button type="submit" disabled={!loginData.login} name='signup' >signup</button>
     </form>
   </div>
 }

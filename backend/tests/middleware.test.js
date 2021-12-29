@@ -1,8 +1,16 @@
 const mocks = require('node-mocks-http')
 const sinon = require('sinon')
+const config = require('../utils/config')
+const jwt = require('jsonwebtoken')
 
 let requireToken, errorHandler
 let mockReq, mockRes, mockNext
+
+const createValidToken = (username) => {
+  return 'Bearer ' + jwt.sign({
+    username: username
+  }, config.secret)
+}
 
 describe('requireToken tests', () => {
   beforeEach(() => {
@@ -33,11 +41,13 @@ describe('requireToken tests', () => {
   })
 
   test('authentication is passed with real token', () => {
+    const token = createValidToken('realTokenGuy')
+    console.log(token)
     mockReq = mocks.createRequest({
       method: 'GET',
       url: '/api/users',
       headers: {
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlJlYWxUZXN0VXNlciIsImlhdCI6MTY0MDY5MzM2Nn0.VW7mfdbplZZmal5fK0Pg0iwXwlqvMC5J3lY9Ytl-G9k'
+        Authorization: token
       }
     })
     requireToken(mockReq, mockRes, mockNext)

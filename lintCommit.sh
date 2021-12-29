@@ -1,11 +1,7 @@
 set -e;
 
-cd frontend;
 npm run lint-fix;
-cd ../backend;
-npm run lint-fix;
-npm run build:ui
-cd ..
+npm run build:ui;
 
 ./scripts/runTests.sh
 

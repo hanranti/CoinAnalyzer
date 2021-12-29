@@ -1,14 +1,23 @@
 module.exports = {
   'env': {
-    'commonjs': true,
     'es2021': true,
     'node': true,
-    'es6': true
+    'cypress/globals': true
   },
-  'extends': 'eslint:recommended',
+  'extends': [
+    'eslint:recommended',
+    'plugin:cypress/recommended'
+  ],
   'parserOptions': {
-    'ecmaVersion': 12
+    'ecmaFeatures': {
+      'jsx': true
+    },
+    'ecmaVersion': 2018,
+    'sourceType': 'module'
   },
+  'plugins': [
+    'cypress'
+  ],
   'rules': {
     'indent': [
       'error',
@@ -35,6 +44,7 @@ module.exports = {
       'error', { 'before': true, 'after': true }
     ],
     'no-console': 0,
-    'no-fallthrough': 0
+    'react/prop-types': 0,
+    'cypress/no-unnecessary-waiting': 0,
   }
 }

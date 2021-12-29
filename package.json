@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "heroku-prebuild": "sh ./scripts/initializeProduction.sh",
-    "start": "cd backend && STAGING=1 npm start"
+    "start": "cd backend && STAGING=1 npm start",
+    "test": "cypress run",
+    "cypress": "cypress open",
+    "lint-fix": "eslint --fix .",
+    "build:ui": "cd backend/ && rm -rf build && cd ../frontend/ && npm run build && cp -r build ../backend"
   },
   "repository": {
     "type": "git",
@@ -19,5 +23,8 @@
   "homepage": "https://github.com/hanranti/CoinAnalyzer#readme",
   "devDependencies": {
     "cypress": "^9.2.0"
+  },
+  "dependencies": {
+    "eslint-plugin-cypress": "^2.12.1"
   }
 }
