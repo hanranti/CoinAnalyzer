@@ -20,6 +20,7 @@ app.use(morgan(':body'))
 
 app.use('/', require('./routers/loginRouter'))
 app.use('/api/users', require('./routers/usersRouter'))
+app.use('/api/coin', require('./routers/coinRouter'))
 
 app.use(express.static('build'))
 

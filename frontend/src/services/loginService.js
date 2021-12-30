@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const login = async (userDetails, setters) => {
   try{
-    const data =  (await axios.post('/login', { username: userDetails.username, password: userDetails.password }, { headers:{} })).data
+    const data = (await axios.post('/login', { username: userDetails.username, password: userDetails.password }, { headers:{} })).data
     setters.setToken(data.token)
     setters.setUser(data)
     setters.setErrorMessage([])

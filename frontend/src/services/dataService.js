@@ -23,7 +23,19 @@ const getAllUsers = async (setters) => {
   }
 }
 
+const getCoinData = async (dates, setters) => {
+  try {
+    if (dates.startDate && dates.endDate) {
+      const res = await axios.get(`${apiUrl}/coin?startdate=${dates.startDate}&enddate=${dates.endDate}`, getConfig())
+      setters.setCoinData(res.data)
+    }
+  } catch(error) {
+    console.log(error)
+  }
+}
+
 export default {
   setToken,
-  getAllUsers
+  getAllUsers,
+  getCoinData
 }

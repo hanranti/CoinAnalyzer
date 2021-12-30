@@ -1,11 +1,13 @@
 import { Toolbar } from 'primereact/toolbar'
-//import { Sidebar } from 'primereact/sidebar'
+import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
-import React/**, { useState }*/ from 'react'
+import React, { useState } from 'react'
 //import { useHistory } from 'react-router-dom'
 //import { InputSwitch } from 'primereact/inputswitch'
 
 const Topbar = ({ topbarData }) => {
+
+  const [usersBar, setUsersBar] = useState(false)
 
   //const [showFilters, setShowFilters] = useState(false)
 
@@ -44,6 +46,16 @@ const Topbar = ({ topbarData }) => {
 
   const right = (
     <React.Fragment>
+      <Sidebar position='right' className='ui-sidebar-sm' visible={usersBar}
+        onHide={() => setUsersBar(false)} >
+        <div>
+          <h3>Coin analyzers:</h3>
+          <ul>
+            {topbarData.users.map(u => (<li key={u.username}>{u.username}</li>))}
+          </ul>
+        </div>
+      </Sidebar>
+      <Button label='Users' disabled={usersBar} onClick={() => setUsersBar(true)} />
       <Button label="Logout" disabled={!topbarData.user} onClick={topbarData.handleLogout}/>
     </React.Fragment>
   )

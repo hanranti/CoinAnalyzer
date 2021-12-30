@@ -19,6 +19,13 @@ function App() {
   const [login, setLogin] = useState(true)
   const [errorMessage, setErrorMessage] = useState([])
   const [users, setUsers] = useState([])
+  const [coinData, setCoinData] = useState([])
+  const [startDate, setStartDate] = useState(false)
+  const [endDate, setEndDate] = useState(false)
+
+  useEffect(() => {
+    dataService.getCoinData({ startDate, endDate }, { setCoinData, setErrorMessage })
+  }, [startDate, endDate])
 
   useEffect(() => {
     const localUser = window.localStorage.getItem('loggedCoinAnalyzer')
@@ -77,16 +84,25 @@ function App() {
     handleSignup: handleSignup
   }
 
+  const coinChartData = {
+    coinData: coinData,
+    startDate: startDate,
+    endDate: endDate,
+    setStartDate: setStartDate,
+    setEndDate: setEndDate
+  }
+
   const contentData = {
     loginData: loginData,
+    coinChartData: coinChartData,
     user: user,
-    errorMessage: errorMessage,
-    users: users
+    errorMessage: errorMessage
   }
 
   const topbarData = {
     user: user,
-    handleLogout: handleLogout
+    handleLogout: handleLogout,
+    users: users
   }
 
   return <div>

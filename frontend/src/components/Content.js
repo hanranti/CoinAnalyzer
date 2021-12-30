@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Switch, Route } from 'react-router-dom'
+import CoinChart from './CoinChart'
 import Login from './Login'
 
 const Content = ({ contentData }) => {
@@ -24,12 +24,7 @@ const Content = ({ contentData }) => {
     }
     {
       contentData.user
-        ? <div>
-          <h3>Coin analyzers:</h3>
-          <ul>
-            {contentData.users.map(u => (<li key={u.username}>{u.username}</li>))}
-          </ul>
-        </div>
+        ? <CoinChart coinChartData={contentData.coinChartData} />
         : <Login loginData={contentData.loginData} />
     }
   </div>
