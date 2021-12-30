@@ -35,14 +35,20 @@ const CoinChart = ({ coinChartData }) => {
   }
 
   const setStartDate = (e) => {
+    e.preventDefault()
     coinChartData.setStartDate(e.target.value)
   }
   const setEndDate = (e) => {
+    e.preventDefault()
     coinChartData.setEndDate(e.target.value)
   }
 
   const downwardTrend = coinChartData.coinData.length > 0
     ? coinMath.longestDownwardTrend(coinChartData.coinData)
+    : []
+
+  const highestVolume = coinChartData.coinData.length > 0
+    ? coinMath.highestTradingVolume(coinChartData.coinData)
     : []
 
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
@@ -66,6 +72,11 @@ const CoinChart = ({ coinChartData }) => {
               {new Date(downwardTrend[0]).getDate()} of {getMonth(new Date(downwardTrend[0]).getMonth())} in {new Date(downwardTrend[0]).getFullYear()} and {new Date(downwardTrend[1]).getDate()} of {getMonth(new Date(downwardTrend[1]).getMonth())} in {new Date(downwardTrend[1]).getFullYear()}
             </p>
             <h5>{downwardTrend[2]} days in total!</h5>
+            <h3>Highest trading volume:</h3>
+            <p>
+                happened in {new Date(highestVolume[0]).getDate()} of {getMonth(new Date(highestVolume[0]).getMonth())} in {new Date(highestVolume[0]).getFullYear()}
+            </p>
+            <h4>with a worth of <b>{highestVolume[1]}€</b></h4>
           </div>
             :<h3>Please select start and end dates</h3>
           }

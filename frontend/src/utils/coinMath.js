@@ -1,4 +1,4 @@
-const longestDownwardTrend = (coinData) => {
+const longestDownwardTrend = coinData => {
   let longestStart = coinData[0][0]
   let longestEnd = coinData[0][0]
   let currentStart = coinData[0][0]
@@ -22,6 +22,9 @@ const longestDownwardTrend = (coinData) => {
   return [longestStart, longestEnd, longestTrendLength]
 }
 
+const highestTradingVolume = coinData => coinData.find(data => data[1] === Math.max(...coinData.map(coin => coin[1])))
+
 export default {
-  longestDownwardTrend
+  longestDownwardTrend,
+  highestTradingVolume
 }
