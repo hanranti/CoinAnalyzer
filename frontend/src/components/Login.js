@@ -53,24 +53,24 @@ const Login = ({ loginData }) => {
     <form onSubmit={loginData.handleLogin} style={usedLoginStyle}>
       <h3>Sign in</h3>
       <p>username:</p>
-      <input type='text' value={loginData.username} name='username' onChange={({ target }) => loginData.setUsername(target.value)} />
+      <input type='text' value={loginData.username} disabled={loginData.login} name='username' onChange={({ target }) => loginData.setUsername(target.value)} />
       <br />
       <p>password:</p>
-      <input type='password' value={loginData.password} name='password' onChange={({ target }) => loginData.setPassword(target.value)} />
+      <input type='password' value={loginData.password} disabled={loginData.login} name='password' onChange={({ target }) => loginData.setPassword(target.value)} />
       <button type="submit" disabled={loginData.login} name='login' >login</button>
     </form>
     <form onSubmit={loginData.handleSignup} style={usedSignupStyle}>
       <h3>Sign up</h3>
       <p>username:</p>
-      <input type='text' value={loginData.newUsername} name='username' onChange={({ target }) => loginData.setNewUsername(target.value)} />
+      <input type='text' value={loginData.newUsername} disabled={!loginData.login} name='username' onChange={({ target }) => loginData.setNewUsername(target.value)} />
       <br />
       <p>password:</p>
-      <input type='password' value={loginData.newPassword} name='password' onChange={({ target }) => loginData.setNewPassword(target.value)} />
+      <input type='password' value={loginData.newPassword} disabled={!loginData.login} name='password' onChange={({ target }) => loginData.setNewPassword(target.value)} />
       <br/>
       <p>retype password:</p>
-      <input type='password' value={loginData.passwordCheck} name='passwordCheck' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
+      <input type='password' value={loginData.passwordCheck} disabled={!loginData.login} name='passwordCheck' onChange={({ target }) => loginData.setPasswordCheck(target.value)} />
       <p>your name:</p>
-      <input type='text' value={loginData.newName} name='name' onChange={({ target }) => loginData.setNewName(target.value)} />
+      <input type='text' value={loginData.newName} disabled={!loginData.login} name='name' onChange={({ target }) => loginData.setNewName(target.value)} />
       <button type="submit" disabled={!loginData.login} name='signup' >signup</button>
     </form>
   </div>
