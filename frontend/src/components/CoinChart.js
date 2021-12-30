@@ -41,6 +41,13 @@ const CoinChart = ({ coinChartData }) => {
     coinChartData.setEndDate(e.target.value)
   }
 
+  const downwardTrend = coinChartData.coinData.length > 0
+    ? coinMath.longestDownwardTrend(coinChartData.coinData)
+    : []
+
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+  const getMonth = (number) => months[number]
+
   return (
     <div className="p-col-12 p-lg-8">
       <div className="p-shadow-1" style={containerStyle}>
@@ -54,12 +61,11 @@ const CoinChart = ({ coinChartData }) => {
           <input className="p-inputtext p-component" type="date"
             value={coinChartData.endDate} onChange={setEndDate}></input>
           {coinChartData.coinData.length > 0 ? <div>
-            <h3>Longest downward trend happenedbetween:</h3>
+            <h3>Longest downward trend happened between:</h3>
             <p>
-              {coinMath.longestDownwardTrend(coinChartData.coinData)[0]}
-              {coinMath.longestDownwardTrend(coinChartData.coinData)[1]}
+              {new Date(downwardTrend[0]).getDate()} of {getMonth(new Date(downwardTrend[0]).getMonth())} in {new Date(downwardTrend[0]).getFullYear()} and {new Date(downwardTrend[1]).getDate()} of {getMonth(new Date(downwardTrend[1]).getMonth())} in {new Date(downwardTrend[1]).getFullYear()}
             </p>
-            {coinMath.longestDownwardTrend(coinChartData.coinData)[2]}
+            <h5>{downwardTrend[2]} days in total!</h5>
           </div>
             :<h3>Please select start and end dates</h3>
           }

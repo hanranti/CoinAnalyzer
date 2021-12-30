@@ -14,7 +14,6 @@ const login = async (userDetails, setters) => {
 }
 
 const createUser = async (userDetails, setters) => {
-  console.log(userDetails)
   if(userDetails.passwordCheck !== userDetails.newPassword) {
     setters.setErrorMessage(['Passwords were not the same!'])
     setters.setNewPassword('')
