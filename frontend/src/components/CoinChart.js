@@ -7,7 +7,7 @@ const CoinChart = ({ coinChartData }) => {
     labels: [...coinChartData.coinData.map(coin => coin[0])],
     datasets: [
       {
-        label: 'Trading volume in euros€',
+        label: 'Bitcoin value in euros€',
         data: [...coinChartData.coinData.map(coin => coin[1])]
       }
     ]
