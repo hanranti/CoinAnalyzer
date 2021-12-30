@@ -25,6 +25,7 @@
     "cypress": "^9.2.0"
   },
   "dependencies": {
+    "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1"
   }
 }
