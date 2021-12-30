@@ -17,8 +17,8 @@ const testUser2 = {
 }*/
 
 const login = (username, password) => {
-  cy.get('input[name=username]').eq(0).type(username)
-  cy.get('input[name=password]').eq(0).type(password)
+  cy.get('input[name=username]').eq(0).type(username, { force: true })
+  cy.get('input[name=password]').eq(0).type(password, { force: true })
   cy.get('button[name=login]').click({ force: true })
   cy.wait(5000)
 }
