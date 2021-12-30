@@ -2,16 +2,13 @@ import { Toolbar } from 'primereact/toolbar'
 import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
 import React, { useState } from 'react'
-//import { useHistory } from 'react-router-dom'
-//import { InputSwitch } from 'primereact/inputswitch'
 
 const Topbar = ({ topbarData }) => {
 
   const [usersBar, setUsersBar] = useState(false)
+  const [userFilter, setUserFilter] = useState('')
 
-  //const [showFilters, setShowFilters] = useState(false)
-
-  //let history = useHistory()
+  const handleUserFilterChange = e => setUserFilter(e.target.value)
 
   const style = {
     backgroundColor: '#cc0000'
@@ -50,8 +47,12 @@ const Topbar = ({ topbarData }) => {
         onHide={() => setUsersBar(false)} >
         <div>
           <h3>Coin analyzers:</h3>
+          <input type='text' onChange={handleUserFilterChange}></input>
           <ul>
-            {topbarData.users.map(u => (<li key={u.username}>{u.username}</li>))}
+            {topbarData.users
+              .filter(coinAnalyzer => coinAnalyzer.username.includes(userFilter))
+              .slice(0, 10)
+              .map(u => (<li key={u.username}>{u.username}</li>))}
           </ul>
         </div>
       </Sidebar>

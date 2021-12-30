@@ -54,9 +54,11 @@ const CoinChart = ({ coinChartData }) => {
           <input className="p-inputtext p-component" type="date"
             value={coinChartData.endDate} onChange={setEndDate}></input>
           {coinChartData.coinData.length > 0 ? <div>
-            <h3>Longest downward trend:</h3>
-            {coinMath.longestDownwardTrend(coinChartData.coinData)[0]}
-            {coinMath.longestDownwardTrend(coinChartData.coinData)[1]}
+            <h3>Longest downward trend happenedbetween:</h3>
+            <p>
+              {coinMath.longestDownwardTrend(coinChartData.coinData)[0]}
+              {coinMath.longestDownwardTrend(coinChartData.coinData)[1]}
+            </p>
             {coinMath.longestDownwardTrend(coinChartData.coinData)[2]}
           </div>
             :<h3>Please select start and end dates</h3>

@@ -107,7 +107,6 @@ function App() {
 
   return <div>
     <Router basename={process.env.REACT_APP_ROUTER_BASENAME}>
-      <button onClick={() => setUser({ token: 'beagle', username: 'beagle' })}>beaglebutton</button>
       <Topbar topbarData={topbarData}></Topbar>
       <Content contentData={contentData}></Content>
     </Router>
