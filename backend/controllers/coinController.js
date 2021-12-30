@@ -8,14 +8,19 @@ const getCoinData = async (startDate, endDate) => {
   console.log('COINCONTROLLER')
   try {
     const coinData = await axios.get(`${apiUrl}&from=${convertToUnix(startDate)}&to=${convertToUnix(endDate)}`)
-    console.log(coinData.data)
     const dates = [...new Set(coinData.data.prices
       .map(dayData => convertToDate(dayData[0])))]
     const coinDataBybyDate = coinData.data.prices
       .map(dayData => [convertToDate(dayData[0]), dayData[1]])
     const singleDateData = dates
       .map(date => coinDataBybyDate.find(data => data[0] === date))
-    return singleDateData
+    const volumeDates = [...new Set(coinData.data.total_volumes
+      .map(dayData => convertToDate(dayData[0])))]
+    const volumeByDate = coinData.data.total_volumes
+      .map(dayData => [convertToDate(dayData[0]), dayData[1]])
+    const singleDateVolumes = volumeDates
+      .map(date => volumeByDate.find(data => data[0] === date))
+    return [singleDateData, singleDateVolumes]
   } catch(error) {
     return { error: [error] }
   }

@@ -27,7 +27,8 @@ const getCoinData = async (dates, setters) => {
   try {
     if (dates.startDate && dates.endDate) {
       const res = await axios.get(`${apiUrl}/coin?startdate=${dates.startDate}&enddate=${dates.endDate}`, getConfig())
-      setters.setCoinData(res.data)
+      setters.setCoinData(res.data[0])
+      setters.setVolumeData(res.data[1])
     }
   } catch(error) {
     console.log(error)

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
 import 'primereact/resources/themes/md-dark-deeppurple/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
@@ -20,11 +19,12 @@ function App() {
   const [errorMessage, setErrorMessage] = useState([])
   const [users, setUsers] = useState([])
   const [coinData, setCoinData] = useState([])
+  const [volumeData, setVolumeData] = useState([])
   const [startDate, setStartDate] = useState(false)
   const [endDate, setEndDate] = useState(false)
 
   useEffect(() => {
-    dataService.getCoinData({ startDate, endDate }, { setCoinData, setErrorMessage })
+    dataService.getCoinData({ startDate, endDate }, { setCoinData, setVolumeData, setErrorMessage })
   }, [startDate, endDate])
 
   useEffect(() => {
@@ -86,6 +86,7 @@ function App() {
 
   const coinChartData = {
     coinData: coinData,
+    volumeData: volumeData,
     startDate: startDate,
     endDate: endDate,
     setStartDate: setStartDate,
@@ -106,10 +107,8 @@ function App() {
   }
 
   return <div>
-    <Router basename={process.env.REACT_APP_ROUTER_BASENAME}>
-      <Topbar topbarData={topbarData}></Topbar>
-      <Content contentData={contentData}></Content>
-    </Router>
+    <Topbar topbarData={topbarData}></Topbar>
+    <Content contentData={contentData}></Content>
   </div>
 }
 

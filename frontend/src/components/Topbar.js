@@ -8,7 +8,15 @@ const Topbar = ({ topbarData }) => {
   const [usersBar, setUsersBar] = useState(false)
   const [userFilter, setUserFilter] = useState('')
 
-  const handleUserFilterChange = e => setUserFilter(e.target.value)
+  const handleUserFilterChange = e => {
+    e.preventDefault()
+    setUserFilter(e.target.value)
+  }
+
+  const handleUsersBarChange = e => {
+    e.preventDefault
+    setUsersBar(true)
+  }
 
   const style = {
     backgroundColor: '#cc0000'
@@ -56,7 +64,7 @@ const Topbar = ({ topbarData }) => {
           </ul>
         </div>
       </Sidebar>
-      <Button label='Users' disabled={usersBar} onClick={() => setUsersBar(true)} />
+      <Button label='Users' disabled={usersBar} onClick={handleUsersBarChange} />
       <Button label="Logout" disabled={!topbarData.user} onClick={topbarData.handleLogout}/>
     </React.Fragment>
   )
