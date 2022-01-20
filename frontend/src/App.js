@@ -39,7 +39,7 @@ function App() {
   }, [user])
 
   useEffect(() => {
-    if(errorMessage !== ''){
+    if(errorMessage.length > 0){
       setTimeout(() => setErrorMessage([]), 10000)
     }
   }, [errorMessage])
